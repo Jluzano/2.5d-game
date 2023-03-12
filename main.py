@@ -1,7 +1,8 @@
 from tkinter import *
-from PIL import ImageTK,Image
+from PIL import ImageTk,Image
 
 root = Tk()
-myImg = ImageTK.PhotoImage(Image.open("horse.PNG"))
-myImg.pack()
+myImg = ImageTk.PhotoImage(Image.open("horse.PNG"))
+myLabel = Label(image = myImg)
+myLabel.pack()
 root.mainloop()
