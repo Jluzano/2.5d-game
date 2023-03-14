@@ -46,6 +46,13 @@ def up(event):
     myLabel.configure(image=img)
     myLabel.image = img
 
+def down(event):
+    global currentDir, myLabel, currentPos
+    currentPos = map[currentPos]["prev_area"]
+    img = ImageTk.PhotoImage(Image.open(map[currentPos]["north"]["IMG"]))
+    myLabel.configure(image=img)
+    myLabel.image = img
+
 m = open("map.json")
 map = json.load(m)
 root = Tk()
@@ -55,7 +62,6 @@ myLabel.pack()
 root.bind("<Left>", left)
 root.bind("<Right>", right)
 root.bind("<Up>", up)
-'''
 root.bind("<Down>", down)
-'''
+
 root.mainloop()

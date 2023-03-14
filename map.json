@@ -26,6 +26,7 @@
         },
         "west" : {
             "IMG" : "imgs/01/4.png"
-        }
+        },
+        "prev_area" : "(0, 0)"
     }
 }
