@@ -2,20 +2,6 @@ from tkinter import *
 from PIL import ImageTk,Image
 import json
 
-def left(event):
-    if currentDir == "north":
-        currentDir = "west"
-        ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
-    elif currentDir == "east":
-        currentDir = "north"
-        ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
-    elif currentDir == "south":
-        currentDir = "east"
-        ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
-    elif currentDir == "west":
-        currentDir = "south"
-        ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
-
 currentDir = "north"
 currentPos = "(0, 0)"
 m = open("map.json")
@@ -30,4 +16,17 @@ root.bind("<Right>", right)
 root.bind("<Up>", up)
 root.bind("<Down>", down)
 '''
+def left(event):
+    if currentDir == "north":
+        currentDir = "west"
+        ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
+    elif currentDir == "east":
+        currentDir = "north"
+        ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
+    elif currentDir == "south":
+        currentDir = "east"
+        ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
+    elif currentDir == "west":
+        currentDir = "south"
+        ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
 root.mainloop()
