@@ -1,16 +1,31 @@
 {
     "(0, 0)" : {
         "north" : {
-            "IMG" : "imgs/horse.png"
+            "IMG" : "imgs/00/horse.png"
         },
         "east" : {
-            "IMG" : "imgs/shark.png"
+            "IMG" : "imgs/00/shark.png"
         },
         "south" : {
-            "IMG" : "imgs/capybara.png"
+            "IMG" : "imgs/00/capybara.png"
         },
         "west" : {
-            "IMG" : "imgs/bocchi.png"
+            "IMG" : "imgs/00/bocchi.png"
+        },
+        "next_area" : "(0, 1)"
+    },
+    "(0, 1)" : {
+        "north" : {
+            "IMG" : "imgs/01/1.png"
+        },
+        "east" : {
+            "IMG" : "imgs/01/2.png"
+        },
+        "south" : {
+            "IMG" : "imgs/01/3.png"
+        },
+        "west" : {
+            "IMG" : "imgs/01/4.png"
         }
     }
 }

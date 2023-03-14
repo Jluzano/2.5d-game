@@ -10,8 +10,7 @@ def replace(currentDir, currentPos):
     myLabel.image = img
 
 def left(event):
-    global currentDir
-    global myLabel
+    global currentDir, myLabel
     if currentDir == "north":
         currentDir = "west"
         replace(currentDir, currentPos)
@@ -26,8 +25,7 @@ def left(event):
         replace(currentDir, currentPos)
 
 def right(event):
-    global currentDir
-    global myLabel
+    global currentDir, myLabel
     if currentDir == "north":
         currentDir = "east"
         replace(currentDir, currentPos)
@@ -41,6 +39,11 @@ def right(event):
         currentDir = "north"
         replace(currentDir, currentPos)
 
+def up(event):
+    global myLabel, currentPos
+    img = ImageTk.PhotoImage(Image.open(map[currentPos]["next_area"]["IMG"]))
+    myLabel.configure(image=img)
+    myLabel.image = img
 
 m = open("map.json")
 map = json.load(m)
@@ -50,8 +53,8 @@ myLabel = Label(image = myImg)
 myLabel.pack()
 root.bind("<Left>", left)
 root.bind("<Right>", right)
-'''
 root.bind("<Up>", up)
+'''
 root.bind("<Down>", down)
 '''
 root.mainloop()
