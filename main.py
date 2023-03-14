@@ -4,7 +4,7 @@ import json
 
 currentDir = "north"
 currentPos = "(0, 0)"
-def testFunction(currentDir, currentPos):
+def replace(currentDir, currentPos):
     img = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
     myLabel.configure(image=img)
     myLabel.image = img
@@ -14,16 +14,32 @@ def left(event):
     global myLabel
     if currentDir == "north":
         currentDir = "west"
-        testFunction(currentDir, currentPos)
+        replace(currentDir, currentPos)
     elif currentDir == "east":
         currentDir = "north"
-        testFunction(currentDir, currentPos)
+        replace(currentDir, currentPos)
     elif currentDir == "south":
         currentDir = "east"
-        testFunction(currentDir, currentPos)
+        replace(currentDir, currentPos)
     elif currentDir == "west":
         currentDir = "south"
-        testFunction(currentDir, currentPos)
+        replace(currentDir, currentPos)
+
+def right(event):
+    global currentDir
+    global myLabel
+    if currentDir == "north":
+        currentDir = "east"
+        replace(currentDir, currentPos)
+    elif currentDir == "east":
+        currentDir = "south"
+        replace(currentDir, currentPos)
+    elif currentDir == "south":
+        currentDir = "west"
+        replace(currentDir, currentPos)
+    elif currentDir == "west":
+        currentDir = "north"
+        replace(currentDir, currentPos)
 
 
 m = open("map.json")
