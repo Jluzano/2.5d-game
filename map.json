@@ -1,24 +1,16 @@
 {
     "(0, 0)" : {
         "north" : {
-            "IMG" : "imgs/horse.png",
-            "left" : "west",
-            "right" : "east"
+            "IMG" : "imgs/horse.png"
         },
         "east" : {
-            "IMG" : "imgs/shark.png",
-            "left" : "north",
-            "right" : "south"
+            "IMG" : "imgs/shark.png"
         },
         "south" : {
-            "IMG" : "imgs/capybara.png",
-            "left" : "east",
-            "right" : "west"
+            "IMG" : "imgs/capybara.png"
         },
         "west" : {
-            "IMG" : "imgs/bocchi.png",
-            "left" : "south",
-            "right" : "north"
+            "IMG" : "imgs/bocchi.png"
         }
     }
 }

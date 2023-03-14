@@ -3,8 +3,18 @@ from PIL import ImageTk,Image
 import json
 
 def left(event):
-    currentDir = map[currentPos]["left"]
-    ImageTk.PhotoImage(Image.open(currentDir))
+    if currentDir == "north":
+        currentDir = "west"
+        ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
+    elif currentDir == "east":
+        currentDir = "north"
+        ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
+    elif currentDir == "south":
+        currentDir = "east"
+        ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
+    elif currentDir == "west":
+        currentDir = "south"
+        ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
 
 currentDir = "north"
 currentPos = "(0, 0)"
