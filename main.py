@@ -6,6 +6,7 @@ currentDir = "north"
 currentPos = "(0, 0)"
 
 def left(event):
+    global currentDir
     if currentDir == "north":
         currentDir = "west"
         ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
