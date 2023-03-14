@@ -15,17 +15,17 @@ def left(event):
         myLabel.image = img
     elif currentDir == "east":
         currentDir = "north"
-        ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
+        img = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
         myLabel.configure(image=img)
         myLabel.image = img
     elif currentDir == "south":
         currentDir = "east"
-        ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
+        img = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
         myLabel.configure(image=img)
         myLabel.image = img
     elif currentDir == "west":
         currentDir = "south"
-        ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
+        img = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
         myLabel.configure(image=img)
         myLabel.image = img
 
