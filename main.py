@@ -7,18 +7,27 @@ currentPos = "(0, 0)"
 
 def left(event):
     global currentDir
+    global myLabel
     if currentDir == "north":
         currentDir = "west"
-        ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
+        img = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
+        myLabel.configure(image=img)
+        myLabel.image = img
     elif currentDir == "east":
         currentDir = "north"
         ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
+        myLabel.configure(image=img)
+        myLabel.image = img
     elif currentDir == "south":
         currentDir = "east"
         ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
+        myLabel.configure(image=img)
+        myLabel.image = img
     elif currentDir == "west":
         currentDir = "south"
         ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
+        myLabel.configure(image=img)
+        myLabel.image = img
 
 
 m = open("map.json")
