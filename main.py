@@ -38,23 +38,25 @@ def right(event):
     elif currentDir == "west":
         currentDir = "north"
         replace(currentDir, currentPos)
-
+'''
 def up(event):
     global currentDir, myLabel, currentPos
     img = ImageTk.PhotoImage(Image.open(map["next_area"][currentDir]["IMG"]))
     myLabel.configure(image=img)
     myLabel.image = img
-
+'''
 m = open("map.json")
 map = json.load(m)
 root = Tk()
 myImg = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
+print(map["next_area"])
 myLabel = Label(image = myImg)
 myLabel.pack()
 root.bind("<Left>", left)
 root.bind("<Right>", right)
-root.bind("<Up>", up)
 '''
+root.bind("<Up>", up)
+
 root.bind("<Down>", down)
 '''
 root.mainloop()
