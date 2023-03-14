@@ -4,18 +4,7 @@ import json
 
 currentDir = "north"
 currentPos = "(0, 0)"
-m = open("map.json")
-map = json.load(m)
-root = Tk()
-myImg = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
-myLabel = Label(image = myImg)
-myLabel.pack()
-root.bind("<Left>", left)
-'''
-root.bind("<Right>", right)
-root.bind("<Up>", up)
-root.bind("<Down>", down)
-'''
+
 def left(event):
     if currentDir == "north":
         currentDir = "west"
@@ -29,4 +18,18 @@ def left(event):
     elif currentDir == "west":
         currentDir = "south"
         ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
+
+
+m = open("map.json")
+map = json.load(m)
+root = Tk()
+myImg = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
+myLabel = Label(image = myImg)
+myLabel.pack()
+root.bind("<Left>", left)
+'''
+root.bind("<Right>", right)
+root.bind("<Up>", up)
+root.bind("<Down>", down)
+'''
 root.mainloop()
