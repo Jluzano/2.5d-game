@@ -40,8 +40,8 @@ def right(event):
         replace(currentDir, currentPos)
 
 def up(event):
-    global myLabel, currentPos
-    img = ImageTk.PhotoImage(Image.open(map[currentPos]["next_area"]["IMG"]))
+    global currentDir, myLabel, currentPos
+    img = ImageTk.PhotoImage(Image.open(map["next_area"][currentDir]["IMG"]))
     myLabel.configure(image=img)
     myLabel.image = img
 
