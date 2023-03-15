@@ -150,7 +150,7 @@
         },
         "east" : {
             "IMG" : "imgs/44/44east.png",
-            "prev_area" : "(4, 3)"
+            "prev_area" : "(3, 4)"
         },
         "south" : {
             "IMG" : "imgs/44/44south.png",
