@@ -5,6 +5,8 @@ import json
 # Initializing current states
 currentDir = "north"
 currentPos = "(0, 0)"
+currentWidth = 0
+currentHeight = 0
 # Function to replace the current compass image with corresponding compass image
 def configureCompass(temp):
     global compassLabel
@@ -30,9 +32,11 @@ def changeCompass(currentDir):
 
 # Function to replace the current image with the next image
 def replace(currentDir, currentPos):
-    global img, canvas
-    img = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]).convert("RGBA"))
-    canvas.create_image(0, 0, image = img, anchor="nw")
+    global img, canvas, currentWidth, currentHeight
+    img = Image.open(map[currentPos][currentDir]["IMG"]).convert("RGBA")
+    image_resize = img.resize((currentWidth, currentHeight), Image.ANTIALIAS)
+    imgReplace = ImageTk.PhotoImage(image_resize)
+    canvas.create_image(0, 0, image = imgReplace, anchor="nw")
 
 # Function for turning left
 def left(event):
@@ -109,9 +113,11 @@ def down(event):
         replace(currentDir, currentPos)
 
 def resizer(e):
-    global img, mod, newBg, currentPos, currentDir
+    global img, mod, newBg, currentPos, currentDir, currentWidth, currentHeight
     resize_image = Image.open(map[currentPos][currentDir]["IMG"])
     mod = resize_image.resize((e.width, e.height), Image.ANTIALIAS)
+    currentWidth = e.width
+    currentHeight = e.height
     newBg = ImageTk.PhotoImage(mod)
     canvas.create_image(0, 0, image = newBg, anchor="nw")
 
