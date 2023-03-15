@@ -114,7 +114,7 @@ def resizer(e):
     resize_image = Image.open(map[currentPos][currentDir]["IMG"])
     mod = resize_image.resize((e.width, e.height), Image.ANTIALIAS)
     newBg = ImageTk.PhotoImage(mod)
-    canvasImg = canvas.create_image(0, 0, image = newBg, anchor="nw")
+    canvasImg = canvas.itemconfigure(canvasImg, image = img)
 
 # Initializing the map json file
 m = open("map.json")
