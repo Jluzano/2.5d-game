@@ -117,11 +117,11 @@ def resizer(e):
 
 # Initializing the map json file
 m = open("map.json")
-map = json.load(m)
+mapJson = json.load(m)
 
 # Initializing the background image
 root = Tk()
-img = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
+img = ImageTk.PhotoImage(Image.open(mapJson[currentPos][currentDir]["IMG"]))
 canvas = Canvas(root, width = 500, height = 500)
 canvas.pack(fill="both", expand=TRUE)
 canvas.create_image(0, 0, image = img, anchor="nw")
@@ -144,7 +144,7 @@ mapLabel.place(x=260, y=0)
 
 # This line resizes the window to match the height
 # and width of the background image so you don't have to resize
-root.geometry('{}x{}'.format(myImg.width(), myImg.height()))
+root.geometry('{}x{}'.format(img.width(), img.height()))
 
 # Binding the arrow keys to functions initialized earlier
 root.bind("<Left>", left)
