@@ -142,7 +142,7 @@ newMap = ImageTk.PhotoImage(resizeMap)
 mapLabel = Label(image = newMap, anchor = NE)
 
 # Placing the compass on top of the background image
-compassLabel.place(x=0, y=0, anchor="nw")
+compassLabel.place(relx=0, rely=0, anchor="nw")
 mapLabel.place(relx=1.0, rely=0, anchor="ne")
 
 # This line resizes the window to match the height
