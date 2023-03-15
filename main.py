@@ -30,7 +30,7 @@ def changeCompass(currentDir):
 
 # Function to replace the current image with the next image
 def replace(currentDir, currentPos):
-    global img, canvas, mod
+    global img, canvas
     img = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]).convert("RGBA"))
     canvas.create_image(0, 0, image = img, anchor="nw")
 
@@ -109,7 +109,6 @@ def down(event):
         replace(currentDir, currentPos)
 
 def resizer(e):
-    global img
     resize_image = Image.open("imgs/00/00north.png")
     mod = resize_image.resize((e.width, e.height), Image.ANTIALIAS)
     newBg = ImageTk.PhotoImage(mod)
