@@ -103,8 +103,8 @@
         },
         "west" : {
             "IMG" : "imgs/14/14west.png",
-            "next_area" : "(0, 4)",
-            "prev_area" : "(2, 4)"
+            "next_area" : "(2, 4)",
+            "prev_area" : "(0, 4)"
         }
     },
     "(2, 4)" : {
