@@ -30,9 +30,9 @@ def changeCompass(currentDir):
 
 # Function to replace the current image with the next image
 def replace(currentDir, currentPos):
-    global img, canvas
+    global img, canvas, canvasImg
     img = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]).convert("RGBA"))
-    canvas.itemconfig(0, 0, image = img, anchor="nw")
+    canvas.itemconfig(canvasImg, image = img)
 
 # Function for turning left
 def left(event):
@@ -125,7 +125,7 @@ img = Image.open(map[currentPos][currentDir]["IMG"])
 img2 = ImageTk.PhotoImage(img)
 canvas = Canvas(root, width = 500, height = 500)
 canvas.pack(fill="both", expand=TRUE)
-canvas.create_image(0, 0, image = img2, anchor="nw")
+canvasImg = canvas.create_image(0, 0, image = img2, anchor="nw")
 
 # Initiallizing the compass, you start facing north
 compassImg = Image.open("imgs/compass/faceNorth.png").convert("RGBA")
