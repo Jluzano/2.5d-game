@@ -30,7 +30,7 @@ def changeCompass(currentDir):
 
 # Function to replace the current image with the next image
 def replace(currentDir, currentPos):
-    img = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
+    img = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]).convert("RGBA"))
     myLabel.configure(image=img)
     myLabel.image = img
 
@@ -118,7 +118,7 @@ myImg = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
 myLabel = Label(image = myImg)
 
 # Initiallizing the compass, you start facing north
-compassImg = Image.open("imgs/compass/faceNorth.png")
+compassImg = Image.open("imgs/compass/faceNorth.png").convert("RGBA")
 resizeCompass = compassImg.resize((50, 50), Image.ANTIALIAS)
 newCompass = ImageTk.PhotoImage(resizeCompass)
 compassLabel = Label(image = newCompass)
