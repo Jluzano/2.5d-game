@@ -108,14 +108,23 @@ def down(event):
         currentPos = map[currentPos][currentDir]["next_area"]
         replace(currentDir, currentPos)
 
+def resizer(e):
+    global img, mod, newBg
+    resize_image = Image.open("imgs/00/00north.png")
+    mod = resize_image.resize((e.width, e.height), Image.ANTIALIAS)
+    newBg = ImageTk.PhotoImage(mod)
+    canvas.create_image(0, 0, image = newBg, anchor="nw")
+
 # Initializing the map json file
 m = open("map.json")
 map = json.load(m)
 
 # Initializing the background image
 root = Tk()
-myImg = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
-myLabel = Label(image = myImg)
+img = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
+canvas = Canvas(root, width = 500, height = 500)
+canvas.pack(fill="both", expand=TRUE)
+canvas.create_image(0, 0, image = img, anchor="nw")
 
 # Initiallizing the compass, you start facing north
 compassImg = Image.open("imgs/compass/faceNorth.png").convert("RGBA")
@@ -130,9 +139,8 @@ newMap = ImageTk.PhotoImage(resizeMap)
 mapLabel = Label(image = newMap, anchor = NE)
 
 # Placing the compass on top of the background image
-myLabel.place(x=0, y=0)
 compassLabel.place(x=0, y=0)
-mapLabel.place(x=250, y=0)
+mapLabel.place(x=260, y=0)
 
 # This line resizes the window to match the height
 # and width of the background image so you don't have to resize
@@ -144,4 +152,5 @@ root.bind("<Right>", right)
 root.bind("<Up>", up)
 root.bind("<Down>", down)
 root.title("2.5D Game")
+root.bind("<Configure>", resizer)
 root.mainloop()
