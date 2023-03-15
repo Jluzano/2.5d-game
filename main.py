@@ -144,7 +144,7 @@ mapLabel.place(x=260, y=0)
 
 # This line resizes the window to match the height
 # and width of the background image so you don't have to resize
-root.geometry('{}x{}'.format(img.width(), img.height()))
+root.geometry('{}x{}'.format(img2.width(), img2.height()))
 
 # Binding the arrow keys to functions initialized earlier
 root.bind("<Left>", left)
