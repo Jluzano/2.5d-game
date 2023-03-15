@@ -30,13 +30,15 @@ def changeCompass(currentDir):
 
 # Function to replace the current image with the next image
 def replace(currentDir, currentPos):
-    img = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]).convert("RGBA"))
-    myLabel.configure(image=img)
-    myLabel.image = img
+    global img, canvas
+    img = Image.open(map[currentPos][currentDir]["IMG"]).convert("RGBA")
+    img = img.resize((canvas.winfo_width(), canvas.winfo_height()), Image.ANTIALIAS)
+    img = ImageTk.PhotoImage(img)
+    canvas.create_image(0, 0, image = img, anchor="nw")
 
 # Function for turning left
 def left(event):
-    global currentDir, myLabel
+    global currentDir
     # The function gets your current position and direction and
     # replaces the image with the next respective image
     if currentDir == "north":
@@ -58,7 +60,7 @@ def left(event):
 
 # Function for turning right
 def right(event):
-    global currentDir, myLabel
+    global currentDir
     if currentDir == "north":
         currentDir = "east"
         replace(currentDir, currentPos)
@@ -78,7 +80,7 @@ def right(event):
 
 # Function for moving forwards
 def up(event):
-    global currentDir, myLabel, currentPos
+    global currentDir, currentPos
     if currentDir == "north":
         currentPos = map[currentPos][currentDir]["next_area"]
         replace(currentDir, currentPos)
@@ -94,7 +96,7 @@ def up(event):
 
 # Function for moving backwards
 def down(event):
-    global currentDir, myLabel, currentPos
+    global currentDir, currentPos
     if currentDir == "north":
         currentPos = map[currentPos][currentDir]["prev_area"]
         replace(currentDir, currentPos)
@@ -108,14 +110,24 @@ def down(event):
         currentPos = map[currentPos][currentDir]["next_area"]
         replace(currentDir, currentPos)
 
+def resizer(e):
+    global img, currentPos, currentDir
+    img = Image.open(map[currentPos][currentDir]["IMG"])
+    img = img.resize((e.width, e.height), Image.ANTIALIAS)
+    img = ImageTk.PhotoImage(img)
+    canvas.create_image(0, 0, image = img, anchor="nw")
+
 # Initializing the map json file
 m = open("map.json")
 map = json.load(m)
 
 # Initializing the background image
 root = Tk()
-myImg = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
-myLabel = Label(image = myImg)
+img = Image.open(map[currentPos][currentDir]["IMG"])
+img2 = ImageTk.PhotoImage(img)
+canvas = Canvas(root, width = 500, height = 500)
+canvas.pack(fill="both", expand=TRUE)
+canvas.create_image(0, 0, image = img2, anchor="nw")
 
 # Initiallizing the compass, you start facing north
 compassImg = Image.open("imgs/compass/faceNorth.png").convert("RGBA")
@@ -123,20 +135,12 @@ resizeCompass = compassImg.resize((50, 50), Image.ANTIALIAS)
 newCompass = ImageTk.PhotoImage(resizeCompass)
 compassLabel = Label(image = newCompass)
 
-#Initializing the player map
-mapImg = Image.open("imgs/compass/playerMap.png").convert("RGBA")
-resizeMap = mapImg.resize((80, 80), Image.ANTIALIAS)
-newMap = ImageTk.PhotoImage(resizeMap)
-mapLabel = Label(image = newMap, anchor = NE)
-
 # Placing the compass on top of the background image
-myLabel.place(x=0, y=0)
 compassLabel.place(x=0, y=0)
-mapLabel.place(x=250, y=0)
 
 # This line resizes the window to match the height
 # and width of the background image so you don't have to resize
-root.geometry('{}x{}'.format(myImg.width(), myImg.height()))
+root.geometry('{}x{}'.format(img2.width(), img2.height()))
 
 # Binding the arrow keys to functions initialized earlier
 root.bind("<Left>", left)
@@ -144,4 +148,5 @@ root.bind("<Right>", right)
 root.bind("<Up>", up)
 root.bind("<Down>", down)
 root.title("2.5D Game")
+root.bind("<Configure>", resizer)
 root.mainloop()
