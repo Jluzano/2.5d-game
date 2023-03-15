@@ -143,7 +143,7 @@ mapLabel = Label(image = newMap, anchor = NE)
 
 # Placing the compass on top of the background image
 compassLabel.place(x=0, y=0)
-mapLabel.place(x=260, y=0)
+mapLabel.place(relx=1, y=0, anchor='ne')
 
 # This line resizes the window to match the height
 # and width of the background image so you don't have to resize
