@@ -121,8 +121,8 @@
         },
         "west" : {
             "IMG" : "imgs/24/24west.png",
-            "next_area" : "(1, 4)",
-            "prev_area" : "(3, 4)"
+            "next_area" : "(3, 4)",
+            "prev_area" : "(1, 4)"
         }
     },
     "(3, 4)" : {
@@ -139,8 +139,8 @@
         },
         "west" : {
             "IMG" : "imgs/34/34west.png",
-            "next_area" : "(2, 4)",
-            "prev_area" : "(4, 4)"
+            "next_area" : "(4, 4)",
+            "prev_area" : "(2, 4)"
         }
     },
     "(4, 4)" : {
