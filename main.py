@@ -7,23 +7,27 @@ currentPos = "(0, 0)"
 def changeCompass(currentDir):
     global compassLabel
     if currentDir == "north":
-        temp = ImageTk.PhotoImage(Image.open("imgs/compass/faceNorth.png"))
-        updateCompass = temp.resize((50, 50), Image.ANTIALIAS)
+        temp = Image.open("imgs/compass/faceNorth.png")
+        temp2 = temp.resize((50, 50), Image.ANTIALIAS)
+        updateCompass = ImageTk.PhotoImage(temp2)
         compassLabel.configure(image=updateCompass)
         compassLabel.image = updateCompass
     elif currentDir == "east":
         temp = ImageTk.PhotoImage(Image.open("imgs/compass/faceEast.png"))
-        updateCompass = temp.resize((50, 50), Image.ANTIALIAS)
+        temp2 = temp.resize((50, 50), Image.ANTIALIAS)
+        updateCompass = ImageTk.PhotoImage(temp2)
         compassLabel.configure(image=updateCompass)
         compassLabel.image = updateCompass
     elif currentDir == "south":
         temp = ImageTk.PhotoImage(Image.open("imgs/compass/faceSouth.png"))
-        updateCompass = temp.resize((50, 50), Image.ANTIALIAS)
+        temp2 = temp.resize((50, 50), Image.ANTIALIAS)
+        updateCompass = ImageTk.PhotoImage(temp2)
         compassLabel.configure(image=updateCompass)
         compassLabel.image = updateCompass
     elif currentDir == "west":
         temp = ImageTk.PhotoImage(Image.open("imgs/compass/faceWest.png"))
-        updateCompass = temp.resize((50, 50), Image.ANTIALIAS)
+        temp2 = temp.resize((50, 50), Image.ANTIALIAS)
+        updateCompass = ImageTk.PhotoImage(temp2)
         compassLabel.configure(image=updateCompass)
         compassLabel.image = updateCompass
 
