@@ -133,6 +133,7 @@ mapLabel = Label(image = newMap, anchor = NE)
 myLabel.place(x=0, y=0)
 compassLabel.place(x=0, y=0)
 mapLabel.place(x=root.winfo_screenwidth()-newMap.width(), y=0)
+mapLabel.lift()
 
 # This line resizes the window to match the height
 # and width of the background image so you don't have to resize
