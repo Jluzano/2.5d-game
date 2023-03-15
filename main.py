@@ -121,7 +121,7 @@ mapJson = json.load(m)
 
 # Initializing the background image
 root = Tk()
-img = Image.open("imgs/00/00north.png")
+img = ImageTk.PhotoImage(file="imgs/00/00north.png")
 canvas = Canvas(root, width = 500, height = 500)
 canvas.pack(fill="both", expand=TRUE)
 canvas.create_image(0, 0, image = img, anchor="nw")
