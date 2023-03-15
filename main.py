@@ -127,12 +127,12 @@ compassLabel = Label(image = newCompass)
 mapImg = Image.open("imgs/compass/playerMap.png").convert("RGBA")
 resizeMap = mapImg.resize((80, 80), Image.ANTIALIAS)
 newMap = ImageTk.PhotoImage(resizeMap)
-mapLabel = Label(image = newMap)
+mapLabel = Label(image = newMap, anchor = NE)
 
 # Placing the compass on top of the background image
 myLabel.place(x=0, y=0)
 compassLabel.place(x=0, y=0)
-mapLabel.place(x = newMap.width(), y = 0)
+# mapLabel.place(x = myImg.width(), y = 0)
 
 # This line resizes the window to match the height
 # and width of the background image so you don't have to resize
