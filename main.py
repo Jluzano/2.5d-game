@@ -111,24 +111,37 @@ def down(event):
 # Initializing the map json file
 m = open("map.json")
 map = json.load(m)
+
 # Initializing the background image
 root = Tk()
 myImg = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
 myLabel = Label(image = myImg)
+
 # Initiallizing the compass, you start facing north
 compassImg = Image.open("imgs/compass/faceNorth.png")
 resizeCompass = compassImg.resize((50, 50), Image.ANTIALIAS)
 newCompass = ImageTk.PhotoImage(resizeCompass)
 compassLabel = Label(image = newCompass)
+
+#Initializing the player map
+mapImg = Image.open("imgs/compass/playerMap.png")
+resizeMap = mapImg.resize((80, 80), Image.ANTIALIAS)
+newMap = ImageTk.PhotoImage(resizeMap)
+mapLabel = Label(image = newMap)
+
 # Placing the compass on top of the background image
 myLabel.place(x=0, y=0)
 compassLabel.place(x=0, y=0)
+mapLabel.place(x = 240, y = 240)
+
 # This line resizes the window to match the height
 # and width of the background image so you don't have to resize
 root.geometry('{}x{}'.format(myImg.width(), myImg.height()))
+
 # Binding the arrow keys to functions initialized earlier
 root.bind("<Left>", left)
 root.bind("<Right>", right)
 root.bind("<Up>", up)
 root.bind("<Down>", down)
+
 root.mainloop()
