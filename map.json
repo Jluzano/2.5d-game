@@ -89,6 +89,24 @@
             "next_area" : "(1, 4)"
         }
     },
+    "(1, 0)" : {
+        "north" : {
+            "IMG" : "imgs/10/10north.png"
+        },
+        "east" : {
+            "IMG" : "imgs/10/10east.png",
+            "next_area" : "(2, 0)",
+            "prev_area" : "(0, 0)"
+        },
+        "south" : {
+            "IMG" : "imgs/10/10south.png"
+        },
+        "west" : {
+            "IMG" : "imgs/10/10west.png",
+            "next_area" : "(2, 0)",
+            "prev_area" : "(0, 0)"
+        }
+    },
     "(1, 4)" : {
         "north" : {
             "IMG" : "imgs/14/14north.png"
@@ -105,6 +123,24 @@
             "IMG" : "imgs/14/14west.png",
             "next_area" : "(2, 4)",
             "prev_area" : "(0, 4)"
+        }
+    },
+    "(2, 0)" : {
+        "north" : {
+            "IMG" : "imgs/20/20north.png"
+        },
+        "east" : {
+            "IMG" : "imgs/20/20east.png",
+            "next_area" : "(3, 0)",
+            "prev_area" : "(1, 0)"
+        },
+        "south" : {
+            "IMG" : "imgs/20/20south.png"
+        },
+        "west" : {
+            "IMG" : "imgs/20/20west.png",
+            "next_area" : "(3, 0)",
+            "prev_area" : "(1, 0)"
         }
     },
     "(2, 4)" : {
@@ -125,6 +161,24 @@
             "prev_area" : "(1, 4)"
         }
     },
+    "(3, 0)" : {
+        "north" : {
+            "IMG" : "imgs/30/30north.png"
+        },
+        "east" : {
+            "IMG" : "imgs/30/30east.png",
+            "next_area" : "(4, 0)",
+            "prev_area" : "(2, 0)"
+        },
+        "south" : {
+            "IMG" : "imgs/30/30south.png"
+        },
+        "west" : {
+            "IMG" : "imgs/30/30west.png",
+            "next_area" : "(4, 0)",
+            "prev_area" : "(2, 0)"
+        }
+    },
     "(3, 4)" : {
         "north" : {
             "IMG" : "imgs/34/34north.png"
@@ -141,6 +195,78 @@
             "IMG" : "imgs/34/34west.png",
             "next_area" : "(4, 4)",
             "prev_area" : "(2, 4)"
+        }
+    },
+    "(4, 0)" : {
+        "north" : {
+            "IMG" : "imgs/40/40north.png",
+            "next_area" : "(4, 1)"
+        },
+        "east" : {
+            "IMG" : "imgs/40/40east.png",
+            "prev_area" : "(3, 0)"
+        },
+        "south" : {
+            "IMG" : "imgs/40/40south.png",
+            "next_area" : "(4, 1)"
+        },
+        "west" : {
+            "IMG" : "imgs/40/40west.png",
+            "prev_area" : "(3, 0)"
+        }
+    },
+    "(4, 1)" : {
+        "north" : {
+            "IMG" : "imgs/41/41north.png",
+            "next_area" : "(4, 2)",
+            "prev_area" : "(4, 0)"
+        },
+        "east" : {
+            "IMG" : "imgs/41/41east.png"
+        },
+        "south" : {
+            "IMG" : "imgs/41/41south.png",
+            "next_area" : "(4, 2)",
+            "prev_area" : "(4, 0)"
+        },
+        "west" : {
+            "IMG" : "imgs/41/41west.png"
+        }
+    },
+    "(4, 2)" : {
+        "north" : {
+            "IMG" : "imgs/42/42north.png",
+            "next_area" : "(4, 3)",
+            "prev_area" : "(4, 1)"
+        },
+        "east" : {
+            "IMG" : "imgs/42/42east.png"
+        },
+        "south" : {
+            "IMG" : "imgs/42/42south.png",
+            "next_area" : "(4, 3)",
+            "prev_area" : "(4, 1)"
+        },
+        "west" : {
+            "IMG" : "imgs/42/42west.png"
+        }
+    },
+    "(4, 3)" : {
+        "north" : {
+            "IMG" : "imgs/43/43north.png",
+            "next_area" : "(4, 4)",
+            "prev_area" : "(4, 2)"
+        },
+        "east" : {
+            "IMG" : "imgs/43/43east.png"
+        },
+        "south" : {
+            "IMG" : "imgs/43/43south.png",
+            "next_area" : "(4, 4)",
+            "prev_area" : "(4, 2)"
+        },
+        "west" : {
+            "IMG" : "imgs/43/43west.png"
         }
     },
     "(4, 4)" : {
