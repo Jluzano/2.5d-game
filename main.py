@@ -82,7 +82,13 @@ def up(event):
     if currentDir == "north":
         currentPos = map[currentPos][currentDir]["next_area"]
         replace(currentDir, currentPos)
+    elif currentDir == "east":
+        currentPos = map[currentPos][currentDir]["next_area"]
+        replace(currentDir, currentPos)
     elif currentDir == "south":
+        currentPos = map[currentPos][currentDir]["prev_area"]
+        replace(currentDir, currentPos)
+    elif currentDir == "west":
         currentPos = map[currentPos][currentDir]["prev_area"]
         replace(currentDir, currentPos)
 
@@ -92,7 +98,13 @@ def down(event):
     if currentDir == "north":
         currentPos = map[currentPos][currentDir]["prev_area"]
         replace(currentDir, currentPos)
+    elif currentDir == "east":
+        currentPos = map[currentPos][currentDir]["prev_area"]
+        replace(currentDir, currentPos)
     elif currentDir == "south":
+        currentPos = map[currentPos][currentDir]["next_area"]
+        replace(currentDir, currentPos)
+    elif currentDir == "west":
         currentPos = map[currentPos][currentDir]["next_area"]
         replace(currentDir, currentPos)
 
