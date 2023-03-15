@@ -5,8 +5,8 @@
             "next_area" : "(0, 1)"
         },
         "east" : {
-            "IMG" : "imgs/00/shark.png",
-            "next_area" : "(1, 0)"
+            "IMG" : "imgs/00/shark.png"
+            
         },
         "south" : {
             "IMG" : "imgs/00/capybara.png"
@@ -17,8 +17,8 @@
     },
     "(0, 1)" : {
         "north" : {
-            "IMG" : "imgs/01/1.png",
-            "next_area" : "(0, 2)"
+            "IMG" : "imgs/01/1.png"
+            
         },
         "east" : {
             "IMG" : "imgs/01/2.png"

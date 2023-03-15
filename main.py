@@ -46,6 +46,11 @@ def up(event):
         img = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
         myLabel.configure(image=img)
         myLabel.image = img
+    elif currentDir == "south":
+        currentPos = map[currentPos][currentDir]["prev_area"]
+        img = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
+        myLabel.configure(image=img)
+        myLabel.image = img
     else:
         print("Can't go that way.")
 
@@ -56,7 +61,7 @@ def down(event):
         img = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
         myLabel.configure(image=img)
         myLabel.image = img
-    if currentDir == "south":
+    elif currentDir == "south":
         currentPos = map[currentPos][currentDir]["next_area"]
         img = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
         myLabel.configure(image=img)
