@@ -30,14 +30,6 @@ def changeCompass(currentDir):
         temp = Image.open("imgs/compass/faceWest.png")
         configureCompass(temp)
 
-# Function to replace the current image with the next image
-def replace(currentDir, currentPos):
-    global img, canvas, currentWidth, currentHeight
-    img = Image.open(map[currentPos][currentDir]["IMG"]).convert("RGBA")
-    image_resize = img.resize((currentWidth, currentHeight), Image.ANTIALIAS)
-    imgReplace = ImageTk.PhotoImage(image_resize)
-    canvas.create_image(0, 0, image = imgReplace, anchor="nw")
-
 # Function for turning left
 def left(event):
     global currentDir, myLabel
@@ -148,6 +140,14 @@ mapLabel = Label(image = newMap, anchor = NE)
 # Placing the compass on top of the background image
 compassLabel.place(x=0, y=0)
 mapLabel.place(x=260, y=0)
+
+# Function to replace the current image with the next image
+def replace(currentDir, currentPos):
+    global img, canvas, currentWidth, currentHeight
+    img = Image.open(map[currentPos][currentDir]["IMG"]).convert("RGBA")
+    image_resize = img.resize((currentWidth, currentHeight), Image.ANTIALIAS)
+    imgReplace = ImageTk.PhotoImage(image_resize)
+    canvas.create_image(0, 0, image = imgReplace, anchor="nw")
 
 # This line resizes the window to match the height
 # and width of the background image so you don't have to resize
