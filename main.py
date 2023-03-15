@@ -108,49 +108,54 @@ def down(event):
         currentPos = map[currentPos][currentDir]["next_area"]
         replace(currentDir, currentPos)
 
-def resizer(e):
-    global img, mod, newBg
-    resize_image = Image.open("imgs/00/00north.png")
-    mod = resize_image.resize((e.width, e.height), Image.ANTIALIAS)
-    newBg = ImageTk.PhotoImage(mod)
-    canvas.create_image(0, 0, image = newBg, anchor="nw")
-
 # Initializing the map json file
 m = open("map.json")
-mapJson = json.load(m)
+map = json.load(m)
 
 # Initializing the background image
 root = Tk()
-img = ImageTk.PhotoImage(Image.open(mapJson[currentPos][currentDir]["IMG"]))
-canvas = Canvas(root, width = 500, height = 500)
-canvas.pack(fill="both", expand=TRUE)
-canvas.create_image(0, 0, image = img, anchor="nw")
+myImg = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
+myLabel = Label(image=myImg)
 
 # Initiallizing the compass, you start facing north
 compassImg = Image.open("imgs/compass/faceNorth.png").convert("RGBA")
 resizeCompass = compassImg.resize((50, 50), Image.ANTIALIAS)
 newCompass = ImageTk.PhotoImage(resizeCompass)
-compassLabel = Label(image = newCompass)
+compassLabel = Label(image=newCompass)
 
-#Initializing the player map
+# Initializing the player map
 mapImg = Image.open("imgs/compass/playerMap.png").convert("RGBA")
 resizeMap = mapImg.resize((80, 80), Image.ANTIALIAS)
 newMap = ImageTk.PhotoImage(resizeMap)
-mapLabel = Label(image = newMap, anchor = NE)
+mapLabel = Label(image=newMap, anchor=NE)
 
 # Placing the compass on top of the background image
+myLabel.place(x=0, y=0)
 compassLabel.place(x=0, y=0)
-mapLabel.place(x=260, y=0)
+mapLabel.place(x=250, y=0)
 
-# This line resizes the window to match the height
-# and width of the background image so you don't have to resize
-root.geometry('{}x{}'.format(img.width(), img.height()))
+# Function to resize and reposition elements when window is resized
+def on_resize(event):
+    # Resize background image
+    global myImg
+    myImg = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]).resize((event.width, event.height), Image.ANTIALIAS))
+    myLabel.configure(image=myImg)
+
+    # Reposition compass and player map labels
+    compassLabel.place(x=0, y=0)
+    mapLabel.place(x=event.width - 80, y=0)
+
+# Bind window resize event to function
+root.bind("<Configure>", on_resize)
 
 # Binding the arrow keys to functions initialized earlier
 root.bind("<Left>", left)
 root.bind("<Right>", right)
 root.bind("<Up>", up)
 root.bind("<Down>", down)
+
+# Resize window to match background image
+root.geometry('{}x{}'.format(myImg.width(), myImg.height()))
+
 root.title("2.5D Game")
-root.bind("<Configure>", resizer)
 root.mainloop()
