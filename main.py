@@ -109,7 +109,7 @@ def down(event):
         replace(currentDir, currentPos)
 
 def resizer(e):
-    global img, mod, newBg
+    global img
     resize_image = Image.open("imgs/00/00north.png")
     mod = resize_image.resize((e.width, e.height), Image.ANTIALIAS)
     newBg = ImageTk.PhotoImage(mod)
