@@ -41,17 +41,28 @@ def right(event):
 
 def up(event):
     global currentDir, myLabel, currentPos
-    currentPos = map[currentPos]["next_area"]
-    img = ImageTk.PhotoImage(Image.open(map[currentPos]["north"]["IMG"]))
-    myLabel.configure(image=img)
-    myLabel.image = img
+    if currentDir == "north":
+        currentPos = map[currentPos][currentDir]["next_area"]
+        img = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
+        myLabel.configure(image=img)
+        myLabel.image = img
+    else:
+        print("Can't go that way.")
 
 def down(event):
     global currentDir, myLabel, currentPos
-    currentPos = map[currentPos]["prev_area"]
-    img = ImageTk.PhotoImage(Image.open(map[currentPos]["north"]["IMG"]))
-    myLabel.configure(image=img)
-    myLabel.image = img
+    if currentDir == "north":
+        currentPos = map[currentPos][currentDir]["prev_area"]
+        img = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
+        myLabel.configure(image=img)
+        myLabel.image = img
+    if currentDir == "south":
+        currentPos = map[currentPos][currentDir]["next_area"]
+        img = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
+        myLabel.configure(image=img)
+        myLabel.image = img
+    else:
+        print("Can't go that way.")
 
 m = open("map.json")
 map = json.load(m)
