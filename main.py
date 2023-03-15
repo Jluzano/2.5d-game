@@ -4,32 +4,27 @@ import json
 
 currentDir = "north"
 currentPos = "(0, 0)"
-def changeCompass(currentDir):
+
+def configureCompass(temp):
     global compassLabel
+    temp2 = temp.resize((50, 50), Image.ANTIALIAS)
+    updateCompass = ImageTk.PhotoImage(temp2)
+    compassLabel.configure(image=updateCompass)
+    compassLabel.image = updateCompass
+
+def changeCompass(currentDir):
     if currentDir == "north":
         temp = Image.open("imgs/compass/faceNorth.png")
-        temp2 = temp.resize((50, 50), Image.ANTIALIAS)
-        updateCompass = ImageTk.PhotoImage(temp2)
-        compassLabel.configure(image=updateCompass)
-        compassLabel.image = updateCompass
+        configureCompass(temp)
     elif currentDir == "east":
         temp = Image.open("imgs/compass/faceEast.png")
-        temp2 = temp.resize((50, 50), Image.ANTIALIAS)
-        updateCompass = ImageTk.PhotoImage(temp2)
-        compassLabel.configure(image=updateCompass)
-        compassLabel.image = updateCompass
+        configureCompass(temp)
     elif currentDir == "south":
         temp = Image.open("imgs/compass/faceSouth.png")
-        temp2 = temp.resize((50, 50), Image.ANTIALIAS)
-        updateCompass = ImageTk.PhotoImage(temp2)
-        compassLabel.configure(image=updateCompass)
-        compassLabel.image = updateCompass
+        configureCompass(temp)
     elif currentDir == "west":
         temp = Image.open("imgs/compass/faceWest.png")
-        temp2 = temp.resize((50, 50), Image.ANTIALIAS)
-        updateCompass = ImageTk.PhotoImage(temp2)
-        compassLabel.configure(image=updateCompass)
-        compassLabel.image = updateCompass
+        configureCompass(temp)
 
 # Function to replace the current image with the next image
 def replace(currentDir, currentPos):
