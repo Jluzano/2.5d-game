@@ -30,9 +30,9 @@ def changeCompass(currentDir):
 
 # Function to replace the current image with the next image
 def replace(currentDir, currentPos):
-    global img, canvas
+    global img, canvas, canvasImg
     img = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]).convert("RGBA"))
-    canvasImg = canvas.itemconfigure(canvasImg, image = img)
+    canvas.itemconfigure(canvasImg, image = img)
 
 # Function for turning left
 def left(event):
@@ -114,7 +114,7 @@ def resizer(e):
     resize_image = Image.open(map[currentPos][currentDir]["IMG"])
     mod = resize_image.resize((e.width, e.height), Image.ANTIALIAS)
     newBg = ImageTk.PhotoImage(mod)
-    canvasImg = canvas.itemconfigure(canvasImg, image = img)
+    canvas.itemconfigure(canvasImg, image = img)
 
 # Initializing the map json file
 m = open("map.json")
