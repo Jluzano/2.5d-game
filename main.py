@@ -111,7 +111,6 @@ def down(event):
 def resizer(e):
     global canvasImg
     global img, mod, newBg, currentPos, currentDir
-    canvas.delete("all")
     replace(currentDir, currentPos, e.width, e.height)
 
 # Initializing the map json file
