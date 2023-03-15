@@ -76,15 +76,15 @@ myImg = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
 myLabel = Label(image = myImg)
 
 compassImg = Image.open("imgs/compass/faceNorth.png")
-resizeCompass = compassImg.resize((100, 100), Image.ANTIALIAS)
+resizeCompass = compassImg.resize((50, 50), Image.ANTIALIAS)
 newCompass = ImageTk.PhotoImage(resizeCompass)
 compassLabel = Label(image = newCompass)
 
 myLabel.place(x=0, y=0)
 compassLabel.place(x=0, y=0)
+root.geometry('{}x{}'.format(myImg.width(), myImg.height()))
 root.bind("<Left>", left)
 root.bind("<Right>", right)
 root.bind("<Up>", up)
 root.bind("<Down>", down)
-
 root.mainloop()
