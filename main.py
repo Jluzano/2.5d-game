@@ -30,9 +30,9 @@ def changeCompass(currentDir):
 
 # Function to replace the current image with the next image
 def replace(currentDir, currentPos):
-    global img, canvas
+    global img, canvas, mod
     img = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]).convert("RGBA"))
-    canvas.create_image(0, 0, image = img, anchor="nw")
+    canvas.create_image(0, 0, image = mod, anchor="nw")
 
 # Function for turning left
 def left(event):
