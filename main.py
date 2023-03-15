@@ -124,7 +124,7 @@ newCompass = ImageTk.PhotoImage(resizeCompass)
 compassLabel = Label(image = newCompass)
 
 #Initializing the player map
-mapImg = Image.open("imgs/compass/playerMap.png")
+mapImg = Image.open("imgs/compass/playerMap.png").convert("RGBA")
 resizeMap = mapImg.resize((80, 80), Image.ANTIALIAS)
 newMap = ImageTk.PhotoImage(resizeMap)
 mapLabel = Label(image = newMap)
@@ -143,5 +143,5 @@ root.bind("<Left>", left)
 root.bind("<Right>", right)
 root.bind("<Up>", up)
 root.bind("<Down>", down)
-
+root.title("2.5D Game")
 root.mainloop()
