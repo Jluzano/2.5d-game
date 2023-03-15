@@ -117,11 +117,11 @@ def resizer(e):
 
 # Initializing the map json file
 m = open("map.json")
-mapJson = json.load(m)
+map = json.load(m)
 
 # Initializing the background image
 root = Tk()
-img = ImageTk.PhotoImage(Image.open(mapJson[currentPos][currentDir]["IMG"]))
+img = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
 canvas = Canvas(root, width = 500, height = 500)
 canvas.pack(fill="both", expand=TRUE)
 canvas.create_image(0, 0, image = img, anchor="nw")
