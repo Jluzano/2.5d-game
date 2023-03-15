@@ -8,7 +8,7 @@ currentPos = "(0, 0)"
 # Function to replace the current compass image with corresponding compass image
 def configureCompass(temp):
     global compassLabel
-    temp2 = temp.resize((50, 50), Image.ANTIALIAS)
+    temp2 = temp.resize((50, 50), Image.Resampling.LANCZOS)
     updateCompass = ImageTk.PhotoImage(temp2)
     compassLabel.configure(image=updateCompass)
     compassLabel.image = updateCompass
@@ -32,7 +32,7 @@ def changeCompass(currentDir):
 def replace(currentDir, currentPos):
     global img, canvas
     img = Image.open(map[currentPos][currentDir]["IMG"]).convert("RGBA")
-    img = img.resize((canvas.winfo_width(), canvas.winfo_height()), Image.ANTIALIAS)
+    img = img.resize((canvas.winfo_width(), canvas.winfo_height()), Image.Resampling.LANCZOS)
     img = ImageTk.PhotoImage(img)
     canvas.create_image(0, 0, image = img, anchor="nw")
 
@@ -113,7 +113,7 @@ def down(event):
 def resizer(e):
     global img, currentPos, currentDir
     img = Image.open(map[currentPos][currentDir]["IMG"])
-    img = img.resize((e.width, e.height), Image.ANTIALIAS)
+    img = img.resize((e.width, e.height), Image.Resampling.LANCZOS)
     img = ImageTk.PhotoImage(img)
     canvas.create_image(0, 0, image = img, anchor="nw")
 
@@ -131,7 +131,7 @@ canvas.create_image(0, 0, image = img2, anchor="nw")
 
 # Initiallizing the compass, you start facing north
 compassImg = Image.open("imgs/compass/faceNorth.png").convert("RGBA")
-resizeCompass = compassImg.resize((50, 50), Image.ANTIALIAS)
+resizeCompass = compassImg.resize((50, 50), Image.Resampling.LANCZOS)
 newCompass = ImageTk.PhotoImage(resizeCompass)
 compassLabel = Label(image = newCompass)
 
