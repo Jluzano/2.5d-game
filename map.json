@@ -10,10 +10,11 @@
         },
         "south" : {
             "IMG" : "imgs/00/00south.png",
-            "next_area" : "(0, 1)"
+            "prev_area" : "(0, 1)"
         },
         "west" : {
-            "IMG" : "imgs/00/00west.png"
+            "IMG" : "imgs/00/00west.png",
+            "prev_area" : "(1, 0)"
         }
     },
     "(0, 1)" : {
@@ -76,7 +77,8 @@
             "prev_area" : "(0, 3)"
         },
         "east" : {
-            "IMG" : "imgs/04/04east.png"
+            "IMG" : "imgs/04/04east.png",
+            "next_area" : "(1, 4)"
         },
         "south" : {
             "IMG" : "imgs/04/04south.png",
@@ -84,6 +86,78 @@
         },
         "west" : {
             "IMG" : "imgs/04/04west.png"
+        }
+    },
+    "(1, 4)" : {
+        "north" : {
+            "IMG" : "imgs/14/14north.png"
+        },
+        "east" : {
+            "IMG" : "imgs/14/14east.png",
+            "next_area" : "(2, 4)",
+            "prev_area" : "(0, 4)"
+        },
+        "south" : {
+            "IMG" : "imgs/14/14south.png"
+        },
+        "west" : {
+            "IMG" : "imgs/14/14west.png",
+            "next_area" : "(0, 4)",
+            "prev_area" : "(2, 4)"
+        }
+    },
+    "(2, 4)" : {
+        "north" : {
+            "IMG" : "imgs/24/24north.png"
+        },
+        "east" : {
+            "IMG" : "imgs/24/24east.png",
+            "next_area" : "(3, 4)",
+            "prev_area" : "(1, 4)"
+        },
+        "south" : {
+            "IMG" : "imgs/24/24south.png"
+        },
+        "west" : {
+            "IMG" : "imgs/24/24west.png",
+            "next_area" : "(1, 4)",
+            "prev_area" : "(3, 4)"
+        }
+    },
+    "(3, 4)" : {
+        "north" : {
+            "IMG" : "imgs/34/34north.png"
+        },
+        "east" : {
+            "IMG" : "imgs/34/34east.png",
+            "next_area" : "(4, 4)",
+            "prev_area" : "(2, 4)"
+        },
+        "south" : {
+            "IMG" : "imgs/34/34south.png"
+        },
+        "west" : {
+            "IMG" : "imgs/34/34west.png",
+            "next_area" : "(2, 4)",
+            "prev_area" : "(4, 4)"
+        }
+    },
+    "(4, 4)" : {
+        "north" : {
+            "IMG" : "imgs/44/44north.png",
+            "prev_area" : "(4, 3)"
+        },
+        "east" : {
+            "IMG" : "imgs/44/44east.png",
+            "prev_area" : "(4, 3)"
+        },
+        "south" : {
+            "IMG" : "imgs/44/44south.png",
+            "next_area" : "(4, 3)"
+        },
+        "west" : {
+            "IMG" : "imgs/44/44west.png",
+            "next_area" : "(3, 4)"
         }
     }
 }

@@ -2,9 +2,10 @@ from tkinter import *
 from PIL import ImageTk,Image
 import json
 
+# Initializing current states
 currentDir = "north"
 currentPos = "(0, 0)"
-
+# Function to replace the current compass image with corresponding compass image
 def configureCompass(temp):
     global compassLabel
     temp2 = temp.resize((50, 50), Image.ANTIALIAS)
@@ -12,6 +13,7 @@ def configureCompass(temp):
     compassLabel.configure(image=updateCompass)
     compassLabel.image = updateCompass
 
+# Function to replace the actual compass image in the corner of the screen
 def changeCompass(currentDir):
     if currentDir == "north":
         temp = Image.open("imgs/compass/faceNorth.png")
@@ -32,9 +34,11 @@ def replace(currentDir, currentPos):
     myLabel.configure(image=img)
     myLabel.image = img
 
-# Function 
+# Function for turning left
 def left(event):
     global currentDir, myLabel
+    # The function gets your current position and direction and
+    # replaces the image with the next respective image
     if currentDir == "north":
         currentDir = "west"
         replace(currentDir, currentPos)
@@ -52,6 +56,7 @@ def left(event):
         replace(currentDir, currentPos)
         changeCompass(currentDir)
 
+# Function for turning right
 def right(event):
     global currentDir, myLabel
     if currentDir == "north":
@@ -71,6 +76,7 @@ def right(event):
         replace(currentDir, currentPos)
         changeCompass(currentDir)
 
+# Function for moving forwards
 def up(event):
     global currentDir, myLabel, currentPos
     if currentDir == "north":
@@ -80,6 +86,7 @@ def up(event):
         currentPos = map[currentPos][currentDir]["prev_area"]
         replace(currentDir, currentPos)
 
+# Function for moving backwards
 def down(event):
     global currentDir, myLabel, currentPos
     if currentDir == "north":
@@ -88,7 +95,7 @@ def down(event):
     elif currentDir == "south":
         currentPos = map[currentPos][currentDir]["next_area"]
         replace(currentDir, currentPos)
-        
+
 # Initializing the map json file
 m = open("map.json")
 map = json.load(m)
@@ -96,7 +103,7 @@ map = json.load(m)
 root = Tk()
 myImg = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]))
 myLabel = Label(image = myImg)
-# Initiallizing the compass
+# Initiallizing the compass, you start facing north
 compassImg = Image.open("imgs/compass/faceNorth.png")
 resizeCompass = compassImg.resize((50, 50), Image.ANTIALIAS)
 newCompass = ImageTk.PhotoImage(resizeCompass)
@@ -104,7 +111,8 @@ compassLabel = Label(image = newCompass)
 # Placing the compass on top of the background image
 myLabel.place(x=0, y=0)
 compassLabel.place(x=0, y=0)
-# This line resizes the window to match the height and width of the background image
+# This line resizes the window to match the height
+# and width of the background image so you don't have to resize
 root.geometry('{}x{}'.format(myImg.width(), myImg.height()))
 # Binding the arrow keys to functions initialized earlier
 root.bind("<Left>", left)
