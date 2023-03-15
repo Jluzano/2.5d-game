@@ -30,7 +30,7 @@ def changeCompass(currentDir):
 
 # Function to replace the current image with the next image
 def replace(currentDir, currentPos):
-    global img, canvasImg
+    global img, canvas, canvasImg
     img = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]).convert("RGBA"))
     canvas.itemconfig(canvasImg, image = img)
     canvas.imgref = img
