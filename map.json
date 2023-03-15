@@ -9,7 +9,8 @@
             
         },
         "south" : {
-            "IMG" : "imgs/00/00south.png"
+            "IMG" : "imgs/00/00south.png",
+            "next_area" : "(0, 1)"
         },
         "west" : {
             "IMG" : "imgs/00/00west.png"
