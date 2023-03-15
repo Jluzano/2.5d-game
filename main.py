@@ -109,12 +109,10 @@ def down(event):
         replace(currentDir, currentPos)
 
 def resizer(e):
+    global canvasImg
     global img, mod, newBg, currentPos, currentDir
-    resize_image = Image.open(map[currentPos][currentDir]["IMG"])
-    mod = resize_image.resize((e.width, e.height), Image.ANTIALIAS)
-    newBg = ImageTk.PhotoImage(mod)
-    #canvas.create_image(0, 0, image = newBg, anchor="nw")
-    img = newBg
+    canvas.delete("all")
+    replace(currentDir, currentPos, e.width, e.height)
 
 # Initializing the map json file
 m = open("map.json")
