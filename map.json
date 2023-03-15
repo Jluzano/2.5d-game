@@ -5,8 +5,8 @@
             "next_area" : "(0, 1)"
         },
         "east" : {
-            "IMG" : "imgs/00/00east.png"
-            
+            "IMG" : "imgs/00/00east.png",
+            "next_area" : "(1, 0)"
         },
         "south" : {
             "IMG" : "imgs/00/00south.png",
@@ -19,6 +19,7 @@
     "(0, 1)" : {
         "north" : {
             "IMG" : "imgs/01/01north.png",
+            "next_area" : "(0, 2)",
             "prev_area" : "(0, 0)"
         },
         "east" : {
@@ -26,10 +27,63 @@
         },
         "south" : {
             "IMG" : "imgs/01/01south.png",
+            "next_area" : "(0, 2)",
             "prev_area" : "(0, 0)"
         },
         "west" : {
             "IMG" : "imgs/01/01west.png"
+        }
+    },
+    "(0, 2)" : {
+        "north" : {
+            "IMG" : "imgs/02/02north.png",
+            "next_area" : "(0, 3)",
+            "prev_area" : "(0, 1)"
+        },
+        "east" : {
+            "IMG" : "imgs/02/02east.png"
+        },
+        "south" : {
+            "IMG" : "imgs/02/02south.png",
+            "next_area" : "(0, 3)",
+            "prev_area" : "(0, 1)"
+        },
+        "west" : {
+            "IMG" : "imgs/02/02west.png"
+        }
+    },
+    "(0, 3)" : {
+        "north" : {
+            "IMG" : "imgs/03/03north.png",
+            "next_area" : "(0, 4)",
+            "prev_area" : "(0, 2)"
+        },
+        "east" : {
+            "IMG" : "imgs/03/03east.png"
+        },
+        "south" : {
+            "IMG" : "imgs/03/03south.png",
+            "next_area" : "(0, 4)",
+            "prev_area" : "(0, 2)"
+        },
+        "west" : {
+            "IMG" : "imgs/03/03west.png"
+        }
+    },
+    "(0, 4)" : {
+        "north" : {
+            "IMG" : "imgs/04/04north.png",
+            "prev_area" : "(0, 3)"
+        },
+        "east" : {
+            "IMG" : "imgs/04/04east.png"
+        },
+        "south" : {
+            "IMG" : "imgs/04/04south.png",
+            "prev_area" : "(0, 3)"
+        },
+        "west" : {
+            "IMG" : "imgs/04/04west.png"
         }
     }
 }
