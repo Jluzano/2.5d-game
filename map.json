@@ -17,8 +17,8 @@
     },
     "(0, 1)" : {
         "north" : {
-            "IMG" : "imgs/01/1.png"
-            
+            "IMG" : "imgs/01/1.png",
+            "prev_area" : "(0, 0)"
         },
         "east" : {
             "IMG" : "imgs/01/2.png"
