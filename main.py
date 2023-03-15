@@ -32,7 +32,7 @@ def changeCompass(currentDir):
 def replace(currentDir, currentPos):
     global img, canvas
     img = ImageTk.PhotoImage(Image.open(map[currentPos][currentDir]["IMG"]).convert("RGBA"))
-    canvas.create_image(0, 0, image = img, anchor="nw")
+    canvasImg = canvas.itemconfigure(canvasImg, image = img)
 
 # Function for turning left
 def left(event):
@@ -109,11 +109,12 @@ def down(event):
         replace(currentDir, currentPos)
 
 def resizer(e):
+    global canvasImg
     global img, mod, newBg, currentPos, currentDir
     resize_image = Image.open(map[currentPos][currentDir]["IMG"])
     mod = resize_image.resize((e.width, e.height), Image.ANTIALIAS)
     newBg = ImageTk.PhotoImage(mod)
-    canvas.create_image(0, 0, image = newBg, anchor="nw")
+    canvasImg = canvas.create_image(0, 0, image = newBg, anchor="nw")
 
 # Initializing the map json file
 m = open("map.json")
@@ -125,7 +126,7 @@ img = Image.open(map[currentPos][currentDir]["IMG"])
 img2 = ImageTk.PhotoImage(img)
 canvas = Canvas(root, width = 500, height = 500)
 canvas.pack(fill="both", expand=TRUE)
-canvas.create_image(0, 0, image = img2, anchor="nw")
+canvasImg = canvas.create_image(0, 0, image = img2, anchor="nw")
 
 # Initiallizing the compass, you start facing north
 compassImg = Image.open("imgs/compass/faceNorth.png").convert("RGBA")
