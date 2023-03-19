@@ -124,7 +124,7 @@ map = json.load(m)
 # Initializing the background image
 root = Tk()
 img = Image.open(map[currentPos][currentDir]["IMG"])
-img2 = img.resize((int(img.width()/3), int(img.height()/3)), Image.Resampling.LANCZOS)
+img2 = img.resize((1344, 653), Image.Resampling.LANCZOS)
 img3 = ImageTk.PhotoImage(img2)
 canvas = Canvas(root, width = 1344, height = 653)
 canvas.pack(fill="both", expand=TRUE)
