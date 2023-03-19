@@ -141,7 +141,7 @@ compassLabel.place(x=0, y=0)
 
 # This line resizes the window to match the height
 # and width of the background image so you don't have to resize
-root.geometry('{}x{}'.format(int(img2.width()/3), int(img2.height()/3)))
+root.geometry('{}x{}'.format(img3.width(), img3.height()))
 
 # Binding the arrow keys to functions initialized earlier
 root.bind("<Left>", left)
