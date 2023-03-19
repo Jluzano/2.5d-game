@@ -35,7 +35,7 @@ def replace(currentDir, currentPos):
     img = img.resize((canvas.winfo_width(), canvas.winfo_height()), Image.Resampling.LANCZOS)
     img = ImageTk.PhotoImage(img)
     canvas.create_image(0, 0, image = img, anchor="nw")
-    canvas.tag_raise(text)
+    canvas.Misc.lift(text)
 
 # Function for turning left
 def left(event):
