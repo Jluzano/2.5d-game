@@ -117,6 +117,7 @@ def resizer(e):
     img = img.resize((e.width, e.height), Image.Resampling.LANCZOS)
     img = ImageTk.PhotoImage(img)
     canvas.create_image(0, 0, image = img, anchor="nw")
+    canvas.tag_raise(text)
 
 # Initializing the map json file
 m = open("map.json")
