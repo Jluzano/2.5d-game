@@ -124,10 +124,11 @@ map = json.load(m)
 # Initializing the background image
 root = Tk()
 img = Image.open(map[currentPos][currentDir]["IMG"])
-img2 = ImageTk.PhotoImage(img)
+img2 = img.resize((1344, 653), Image.Resampling.LANCZOS)
+img3 = ImageTk.PhotoImage(img2)
 canvas = Canvas(root, width = 500, height = 500)
 canvas.pack(fill="both", expand=TRUE)
-canvas.create_image(0, 0, image = img2, anchor="nw")
+canvas.create_image(0, 0, image = img3, anchor="nw")
 
 # Initiallizing the compass, you start facing north
 compassImg = Image.open("imgs/compass/faceNorth.png").convert("RGBA")
