@@ -35,7 +35,6 @@ def replace(currentDir, currentPos):
     img = img.resize((canvas.winfo_width(), canvas.winfo_height()), Image.Resampling.LANCZOS)
     img = ImageTk.PhotoImage(img)
     canvas.create_image(0, 0, image = img, anchor="nw")
-    canvas.tag_raise(text)
 
 # Function for turning left
 def left(event):
@@ -117,7 +116,6 @@ def resizer(e):
     img = img.resize((e.width, e.height), Image.Resampling.LANCZOS)
     img = ImageTk.PhotoImage(img)
     canvas.create_image(0, 0, image = img, anchor="nw")
-    canvas.tag_raise(text)
 
 # Initializing the map json file
 m = open("map.json")
@@ -131,7 +129,6 @@ img3 = ImageTk.PhotoImage(img2)
 canvas = Canvas(root, width = 1344, height = 653)
 canvas.pack(fill="both", expand=TRUE)
 canvas.create_image(0, 0, image = img3, anchor="nw")
-text = canvas.create_text(0, 0, fill="red", anchor="center", font=("Arial", 20), text="Hello!")
 
 # Initiallizing the compass, you start facing north
 compassImg = Image.open("imgs/compass/faceNorth.png").convert("RGBA")
