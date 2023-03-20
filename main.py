@@ -2,6 +2,7 @@
 from tkinter import *
 from PIL import ImageTk,Image
 import json
+from tkinter import messagebox
 
 # Initializing starting states
 currentDir = "north" # you will start facing north
@@ -104,18 +105,44 @@ def up(event):
 def down(event):
     global currentDir, currentPos
     if currentDir == "north":
-        currentPos = map[currentPos][currentDir]["prev_area"]
-        replace(currentDir, currentPos)
+        if(cantGoBack(currentPos, currentDir)):
+            popup()
+        else:
+            currentPos = map[currentPos][currentDir]["prev_area"]
+            replace(currentDir, currentPos)
     elif currentDir == "east":
-        currentPos = map[currentPos][currentDir]["prev_area"]
-        replace(currentDir, currentPos)
+        if(cantGoBack(currentPos, currentDir)):
+            popup()
+        else:
+            currentPos = map[currentPos][currentDir]["prev_area"]
+            replace(currentDir, currentPos)
     elif currentDir == "south":
-        currentPos = map[currentPos][currentDir]["next_area"]
-        replace(currentDir, currentPos)
+        if(cantGoForwards(currentPos, currentDir)):
+            popup()
+        else:
+            currentPos = map[currentPos][currentDir]["next_area"]
+            replace(currentDir, currentPos)
     elif currentDir == "west":
-        currentPos = map[currentPos][currentDir]["next_area"]
-        replace(currentDir, currentPos)
+        if(cantGoForwards(currentPos, currentDir)):
+            popup()
+        else:
+            currentPos = map[currentPos][currentDir]["next_area"]
+            replace(currentDir, currentPos)
 
+# This function will check if there is a wall behind you
+def cantGoBack(pos, dir):
+    if map[pos][dir]["prev_area"] == "none":
+        return TRUE
+    else:
+        return FALSE
+
+# This function will check if there is a wall in front of you
+def cantGoForwards(pos, dir):
+    if map[pos][dir]["next_area"] == "none":
+        return TRUE
+    else:
+        return FALSE
+    
 # This function will get the player's current position and display the image
 # for their respective position and direction that they are facing
 # This is mainly meant to resize the image that first appears when running
@@ -127,6 +154,16 @@ def resizer(e):
     img = img.resize((e.width, e.height), Image.Resampling.LANCZOS)
     img = ImageTk.PhotoImage(img)
     canvas.create_image(0, 0, image = img, anchor="nw")
+
+# This function will make a notification pop up if you can't go a certain direction
+def popup():
+    pop = messagebox.showinfo("Notification", "You can't go that way.")
+# When you press ok on the notification popup, it returns an "ok" message.
+# These two lines below make it so that it doesn't show up at the bottom
+# of your screen when you're playing.
+    if pop == "ok":
+        return NONE
+    Label(root, text=pop).pack()
 
 # Initializing and opening the map json file
 m = open("map.json")

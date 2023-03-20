@@ -2,19 +2,23 @@
     "(0, 0)" : {
         "north" : {
             "IMG" : "imgs/00/00north.png",
-            "next_area" : "(0, 1)"
+            "next_area" : "(0, 1)",
+            "prev_area" : "none"
         },
         "east" : {
             "IMG" : "imgs/00/00east.png",
-            "next_area" : "(1, 0)"
+            "next_area" : "(1, 0)",
+            "prev_area" : "none"
         },
         "south" : {
             "IMG" : "imgs/00/00south.png",
-            "next_area" : "(0, 1)"
+            "next_area" : "(0, 1)",
+            "prev_area" : "none"
         },
         "west" : {
             "IMG" : "imgs/00/00west.png",
-            "next_area" : "(1, 0)"
+            "next_area" : "(1, 0)",
+            "prev_area" : "none"
         }
     },
     "(0, 1)" : {
