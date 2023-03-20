@@ -89,17 +89,29 @@ def right(event):
 def up(event):
     global currentDir, currentPos
     if currentDir == "north":
-        currentPos = map[currentPos][currentDir]["next_area"]
-        replace(currentDir, currentPos)
+        if(cantGoForwards(currentPos, currentDir)):
+            popup()
+        else:
+            currentPos = map[currentPos][currentDir]["next_area"]
+            replace(currentDir, currentPos)
     elif currentDir == "east":
-        currentPos = map[currentPos][currentDir]["next_area"]
-        replace(currentDir, currentPos)
+        if(cantGoForwards(currentPos, currentDir)):
+            popup()
+        else:
+            currentPos = map[currentPos][currentDir]["next_area"]
+            replace(currentDir, currentPos)
     elif currentDir == "south":
-        currentPos = map[currentPos][currentDir]["prev_area"]
-        replace(currentDir, currentPos)
+        if(cantGoBack(currentPos, currentDir)):
+            popup()
+        else:
+            currentPos = map[currentPos][currentDir]["prev_area"]
+            replace(currentDir, currentPos)
     elif currentDir == "west":
-        currentPos = map[currentPos][currentDir]["prev_area"]
-        replace(currentDir, currentPos)
+        if(cantGoBack(currentPos, currentDir)):
+            popup()
+        else:
+            currentPos = map[currentPos][currentDir]["prev_area"]
+            replace(currentDir, currentPos)
 
 # Function for moving backwards
 def down(event):
