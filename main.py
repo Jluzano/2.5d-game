@@ -1,23 +1,28 @@
+# Importing the necessary things in order to run the program
 from tkinter import *
 from PIL import ImageTk,Image
 import json
 
-# Initializing current states
-currentDir = "north"
-currentPos = "(0, 0)"
-# Function to replace the current compass image with corresponding compass image
+# Initializing starting states
+currentDir = "north" # you will start facing north
+currentPos = "(0, 0)" # you will start in the bottom left corner of the map
+# This function fits inside the changeCompass function, this is
+# where the compass image is actually replaced and updated.
 def configureCompass(temp):
     global compassLabel
-    temp2 = temp.resize((50, 50), Image.Resampling.LANCZOS)
+    temp2 = temp.resize((50, 50), Image.Resampling.LANCZOS) # resizing the image
     updateCompass = ImageTk.PhotoImage(temp2)
     compassLabel.configure(image=updateCompass)
-    compassLabel.image = updateCompass
+    compassLabel.image = updateCompass # updating the compass
 
-# Function to replace the actual compass image in the corner of the screen
+# Function to replace the compass image in the corner of the screen to match
+# the direction that you are facing. The replacing is done in the configureCompass
+# function, this function is for grabbing the necessary compass image and then sending it
+# to the configureCompass function.
 def changeCompass(currentDir):
-    if currentDir == "north":
-        temp = Image.open("imgs/compass/faceNorth.png")
-        configureCompass(temp)
+    if currentDir == "north": # matches condition with direction
+        temp = Image.open("imgs/compass/faceNorth.png") # grabbing image path
+        configureCompass(temp) # sending the image to be replaced
     elif currentDir == "east":
         temp = Image.open("imgs/compass/faceEast.png")
         configureCompass(temp)
@@ -33,8 +38,9 @@ def replace(currentDir, currentPos):
     global img, canvas, text
     img = Image.open(map[currentPos][currentDir]["IMG"]).convert("RGBA")
     img = img.resize((canvas.winfo_width(), canvas.winfo_height()), Image.Resampling.LANCZOS)
+    # ^^ This line resizes the image so it will load faster
     img = ImageTk.PhotoImage(img)
-    canvas.create_image(0, 0, image = img, anchor="nw")
+    canvas.create_image(0, 0, image = img, anchor="nw") # creating a new image to replace the old one
 
 # Function for turning left
 def left(event):
@@ -44,7 +50,7 @@ def left(event):
     if currentDir == "north":
         currentDir = "west"
         replace(currentDir, currentPos)
-        changeCompass(currentDir)
+        changeCompass(currentDir) # each time you move, it updates the compass
     elif currentDir == "east":
         currentDir = "north"
         replace(currentDir, currentPos)
@@ -110,6 +116,11 @@ def down(event):
         currentPos = map[currentPos][currentDir]["next_area"]
         replace(currentDir, currentPos)
 
+# This function will get the player's current position and display the image
+# for their respective position and direction that they are facing
+# This is mainly meant to resize the image that first appears when running
+# the program, since without this function it will be displayed at its
+# original size.
 def resizer(e):
     global img, currentPos, currentDir
     img = Image.open(map[currentPos][currentDir]["IMG"])
@@ -117,18 +128,19 @@ def resizer(e):
     img = ImageTk.PhotoImage(img)
     canvas.create_image(0, 0, image = img, anchor="nw")
 
-# Initializing the map json file
+# Initializing and opening the map json file
 m = open("map.json")
 map = json.load(m)
 
-# Initializing the background image
+# Initializing a canvas and making the starting image the background image
 root = Tk()
-img = Image.open(map[currentPos][currentDir]["IMG"])
+img = Image.open(map[currentPos][currentDir]["IMG"]) # out current position is (0, 0)
 img2 = img.resize((1344, 653), Image.Resampling.LANCZOS)
+# ^^ the original images are 4032 x 1960, so I resized the canvas to 1/3 of its original size to reduce loading time
 img3 = ImageTk.PhotoImage(img2)
-canvas = Canvas(root, width = 1344, height = 653)
+canvas = Canvas(root, width = 1344, height = 653) # making the canvas the same size as the photos
 canvas.pack(fill="both", expand=TRUE)
-canvas.create_image(0, 0, image = img3, anchor="nw")
+canvas.create_image(0, 0, image = img3, anchor="nw") # setting the image as the background image
 
 # Initiallizing the compass, you start facing north
 compassImg = Image.open("imgs/compass/faceNorth.png").convert("RGBA")
@@ -143,7 +155,7 @@ compassLabel.place(x=0, y=0)
 # and width of the background image so you don't have to resize
 root.geometry('{}x{}'.format(img3.width(), img3.height()))
 
-# Binding the arrow keys to functions initialized earlier
+# Binding the arrow keys to the functions initialized earlier
 root.bind("<Left>", left)
 root.bind("<Right>", right)
 root.bind("<Up>", up)
