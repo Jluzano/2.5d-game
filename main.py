@@ -43,6 +43,10 @@ def replace(currentDir, currentPos):
     img = ImageTk.PhotoImage(img)
     canvas.create_image(0, 0, image = img, anchor="nw") # creating a new image to replace the old one
 
+# -------------------------------------------------------------------------------------------------------
+# MOVEMENT FUNCTIONS
+# -------------------------------------------------------------------------------------------------------
+
 # Function for turning left
 def left(event):
     global currentDir
@@ -154,7 +158,21 @@ def cantGoForwards(pos, dir):
         return TRUE
     else:
         return FALSE
-    
+
+# This function will make a notification pop up if you can't go a certain direction
+def popup():
+    pop = messagebox.showinfo("Notification", "You can't go that way.\n(Press ENTER or click OK to close.)")
+# When you press ok on the notification popup, it returns an "ok" message.
+# These two lines below make it so that it doesn't show up at the bottom
+# of your screen when you're playing.
+    if pop == "ok":
+        return NONE
+    Label(root, text=pop).pack()
+
+# -------------------------------------------------------------------------------------------------------
+# INITIALIZING THE GAME
+# -------------------------------------------------------------------------------------------------------
+
 # This function will get the player's current position and display the image
 # for their respective position and direction that they are facing
 # This is mainly meant to resize the image that first appears when running
@@ -166,16 +184,6 @@ def resizer(e):
     img = img.resize((e.width, e.height), Image.Resampling.LANCZOS)
     img = ImageTk.PhotoImage(img)
     canvas.create_image(0, 0, image = img, anchor="nw")
-
-# This function will make a notification pop up if you can't go a certain direction
-def popup():
-    pop = messagebox.showinfo("Notification", "You can't go that way.")
-# When you press ok on the notification popup, it returns an "ok" message.
-# These two lines below make it so that it doesn't show up at the bottom
-# of your screen when you're playing.
-    if pop == "ok":
-        return NONE
-    Label(root, text=pop).pack()
 
 # Initializing and opening the map json file
 m = open("map.json")
@@ -209,6 +217,6 @@ root.bind("<Left>", left)
 root.bind("<Right>", right)
 root.bind("<Up>", up)
 root.bind("<Down>", down)
-root.title("2.5D Game")
-root.bind("<Configure>", resizer)
+root.title("2.5D Game") # Changing the name of the game window
+root.bind("<Configure>", resizer) # The resizer function will be called every time the image changes
 root.mainloop()
