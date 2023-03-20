@@ -1,4 +1,4 @@
-This is a program created with Python to simulate a 2.5D game.
+This is a program created with Python to simulate a 2.5D game, and it is run through Git.
 The map is a 5x5 grid, and movement is as follows:
 
 O O O O O
